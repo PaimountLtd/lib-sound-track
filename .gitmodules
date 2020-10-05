@@ -1,0 +1,6 @@
+[submodule "twitch-native-ipc"]
+	path = twitch-native-ipc
+	url = https://github.com/stream-labs/twitch-native-ipc.git
+[submodule "GSL"]
+	path = GSL
+	url = https://github.com/microsoft/GSL.git
