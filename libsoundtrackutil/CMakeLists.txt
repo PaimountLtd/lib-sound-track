@@ -4,6 +4,8 @@ target_link_libraries(libsoundtrackutil PUBLIC
   nativeipc.lib
   )
 
+add_dependencies(libsoundtrackutil nativeipc)
+
 if(MSVC)
   target_compile_definitions(libsoundtrackutil PRIVATE
     WIN32_LEAN_AND_MEAN
