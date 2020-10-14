@@ -7,6 +7,7 @@ target_link_libraries(libsoundtrackutil PUBLIC
 add_dependencies(libsoundtrackutil nativeipc)
 
 if(MSVC)
+  target_compile_options(libsoundtrackutil PRIVATE /MT)
   target_compile_definitions(libsoundtrackutil PRIVATE
     WIN32_LEAN_AND_MEAN
     NOMINMAX
