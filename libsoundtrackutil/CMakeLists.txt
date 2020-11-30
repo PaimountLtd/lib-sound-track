@@ -1,11 +1,13 @@
 add_library(libsoundtrackutil STATIC)
 
 target_link_libraries(libsoundtrackutil PUBLIC
-  CONAN_PKG::twitch-native-ipc
-  CONAN_PKG::ms-gsl
+  nativeipc.lib
   )
 
+add_dependencies(libsoundtrackutil nativeipc)
+
 if(MSVC)
+  target_compile_options(libsoundtrackutil PRIVATE /MT)
   target_compile_definitions(libsoundtrackutil PRIVATE
     WIN32_LEAN_AND_MEAN
     NOMINMAX
@@ -15,6 +17,8 @@ endif()
 
 target_include_directories(libsoundtrackutil PUBLIC
   include
+  ${PROJECT_SOURCE_DIR}/twitch-native-ipc/libnativeipc/include/
+  ${PROJECT_SOURCE_DIR}/GSL/include
   )
 
 target_sources(libsoundtrackutil PRIVATE
@@ -34,4 +38,4 @@ install(DIRECTORY include
   DESTINATION ${CMAKE_INSTALL_PREFIX}
   )
 
-format_code(libsoundtrackutil)
+#format_code(libsoundtrackutil)
